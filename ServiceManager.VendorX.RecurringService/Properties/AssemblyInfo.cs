@@ -5,12 +5,16 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WebApplication2")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WebApplication2")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyTitle("ServiceManager.VendorX.RecurringService")]
+[assembly: AssemblyDescription("interworks.cloud Platform Service Manager code example for Recurring Service")]
+#if (DEBUG)
+[assembly: AssemblyConfiguration("Debug")]
+#else
+[assembly: AssemblyConfiguration("Release")]
+#endif
+[assembly: AssemblyCompany("interworks.cloud")]
+[assembly: AssemblyProduct("interworks.cloud Platform Service Management API")]
+[assembly: AssemblyCopyright("Copyright © interworks.cloud 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
