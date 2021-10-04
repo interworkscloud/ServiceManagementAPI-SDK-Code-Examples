@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Service Manager Example</title>
+    <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #Header {
+            background-color: #1b3067;
+        }
+    </style>
+</head>
+<body>
+    <div id="Header">
+        <img src="App_Themes/Default/Images/Logo.png" width="250px" />
+    </div>
+    <div id="Content">
+        <h1>Service Manager Example</h1>
+        <div>
+            using <a href='https://interworkscloud.atlassian.net/wiki/spaces/ICPD/pages/4664525/Service+Manager+SDK' target='_blank'>Service Management SDK for .NET 4.8</a>
+        </div>
+        <div>
+            <h2>Available end-points</h2>
+            <h3>Setup Configuration</h3>
+            <ul>
+                <li>GET <a href='api/Example/Fields/Get'>api/Example/Fields/Get</a></li>
+                <li>POST <a href='api/Example/Fields/Validate'>api/Example/Fields/Validate</a></li>
+                <li>GET <a href='api/Example/Fields/AdditionalInfo'>api/Example/Fields/AdditionalInfo</a></li>
+                <li>GET <a href='api/Example/Fields/ServiceDefinition'>api/Example/Fields/ServiceDefinition</a></li>
+            </ul>
+
+            <h3>Accounts Management</h3>
+            <ul>
+                <li>GET <a href='api/Example/Accounts/SyncOptions'>api/Example/Accounts/SyncOptions</a></li>
+                <li>POST <a href='api/Example/Accounts/Synchronize'>api/Example/Accounts/Synchronize</a></li>
+                <li>POST <a href='api/Example/Accounts/Delete'>api/Example/Accounts/Delete</a></li>
+                <li>POST <a href='api/Example/Accounts/Exists'>api/Example/Accounts/Exists</a></li>
+            </ul>
+
+            <h3>Subscriptions Management</h3>
+            <ul>
+                <li>POST <a href='api/Example/Subscriptions/Create'>api/Example/Subscriptions/Create</a></li>
+                <li>POST <a href='api/Example/Subscriptions/Update'>api/Example/Subscriptions/Update</a></li>
+                <li>POST <a href='api/Example/Subscriptions/Activate'>api/Example/Subscriptions/Activate</a></li>
+                <li>POST <a href='api/Example/Subscriptions/Suspend'>api/Example/Subscriptions/Suspend</a></li>
+                <li>POST <a href='api/Example/Subscriptions/Cancel'>api/Example/Subscriptions/Cancel</a></li>
+            </ul>
+
+            <h3>Addons Management</h3>
+            <ul>
+                <li>POST <a href='api/Example/Addons/Create'>api/Example/Addons/Create</a></li>
+                <li>POST <a href='api/Example/Addons/Update'>api/Example/Addons/Update</a></li>
+                <li>POST <a href='api/Example/Addons/Cancel'>api/Example/Addons/Cancel</a></li>
+            </ul>
+
+            <h3>Assets Management</h3>
+            <ul>
+                <li>POST <a href='api/Example/Assets/Create'>api/Example/Assets/Create</a></li>
+                <li>POST <a href='api/Example/Assets/Update'>api/Example/Assets/Update</a></li>
+                <li>POST <a href='api/Example/Assets/Cancel'>api/Example/Assets/Cancel</a></li>
+            </ul>
+           
+            <h3>Pay Per Usage Management</h3>
+            <ul>
+                <li>POST <a href='api/Example/PPU/Usages'>api/Example/PPU/Usages</a></li>
+                <li>POST <a href='api/Example/PPU/BillingItems'>api/Example/PPU/BillingItems</a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
