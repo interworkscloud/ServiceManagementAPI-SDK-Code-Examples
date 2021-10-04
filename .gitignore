@@ -338,3 +338,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/ServiceManagerExample/Properties/ServiceDependencies/smexample - Web Deploy/profile.arm.json

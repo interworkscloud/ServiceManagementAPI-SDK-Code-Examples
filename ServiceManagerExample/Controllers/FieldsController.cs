@@ -16,7 +16,7 @@ namespace ServiceManagerExample.Controllers
         {
             using (LogTracer tracer = new LogTracer(LogActionInput, Logging, ActionName, ActionLogUUID))
             {
-                return SuccessResult(ActionLogUUID, FieldsHelper.GetFieldsCollection(ActionLogUUID));
+                return SuccessResult(ActionLogUUID, FieldsHelper.GetFieldsCollection());
             }
         }
 
