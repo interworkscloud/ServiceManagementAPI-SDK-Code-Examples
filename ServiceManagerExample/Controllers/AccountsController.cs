@@ -52,7 +52,7 @@ namespace ServiceManagerExample.Controllers
 
                 //... implement your synchronization procedure
 
-                result.Result = "account_on_other_system";
+                result.Result = System.Guid.NewGuid().ToString();
 
                 return SuccessResult(ActionLogUUID, result);
             }
@@ -70,6 +70,8 @@ namespace ServiceManagerExample.Controllers
                 };
 
                 //... implement your delete procedure
+
+                result.Result = account.ExternalID;
 
                 return SuccessResult(ActionLogUUID, result);
             }
