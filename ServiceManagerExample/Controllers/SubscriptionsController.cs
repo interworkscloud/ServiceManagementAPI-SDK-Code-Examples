@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 
 
-namespace ServiceManagerExample.Controllers
+namespace ServiceManager.VendorX.RecurringService.Controllers
 {
     using Interworks.Cloud.ServiceManagersSDK.Libraries.Controllers;
-    using Interworks.Cloud.ServiceManagersSDK.Libraries.Controllers.Interfaces;
     using Interworks.Cloud.ServiceManagersSDK.Libraries.Logs;
     using Interworks.Extensions.Models.Results;
     using Interworks.Extensions.Models.Services;

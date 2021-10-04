@@ -2,12 +2,12 @@
 using Interworks.Cloud.ServiceManagersSDK.Libraries.Logs;
 using Interworks.Extensions.Models.Fields;
 using Interworks.Extensions.Models.ProductTypes;
-using ServiceManagerExample.Code;
+using ServiceManager.VendorX.RecurringService.Code;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace ServiceManagerExample.Controllers
+namespace ServiceManager.VendorX.RecurringService.Controllers
 {
     public partial class ExampleController : ServiceManagerBaseController
     {

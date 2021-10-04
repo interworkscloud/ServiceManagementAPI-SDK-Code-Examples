@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace ServiceManagerExample
+namespace ServiceManager.VendorX.RecurringService
 {
     using Interworks = Interworks.Cloud.ServiceManagersSDK.Libraries.Filters;
 

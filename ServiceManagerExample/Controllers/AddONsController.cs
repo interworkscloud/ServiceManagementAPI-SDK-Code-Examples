@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Http;
 
 
-namespace ServiceManagerExample.Controllers
+namespace ServiceManager.VendorX.RecurringService.Controllers
 {
     using Interworks.Cloud.ServiceManagersSDK.Libraries.Controllers;
     using Interworks.Cloud.ServiceManagersSDK.Libraries.Controllers.Interfaces;

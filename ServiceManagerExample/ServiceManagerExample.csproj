@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServiceManagerExample</RootNamespace>
-    <AssemblyName>ServiceManagerExample</AssemblyName>
+    <RootNamespace>ServiceManager.VendorX.RecurringService</RootNamespace>
+    <AssemblyName>ServiceManager.VendorX.RecurringService</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />

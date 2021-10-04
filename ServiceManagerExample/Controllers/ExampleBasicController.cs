@@ -2,7 +2,7 @@
 using System.Web.Http.Controllers;
 using Interworks.Cloud.ServiceManagersSDK.Libraries.Controllers;
 
-namespace ServiceManagerExample.Controllers
+namespace ServiceManager.VendorX.RecurringService.Controllers
 {
 
     [RoutePrefix("api/Example")]
