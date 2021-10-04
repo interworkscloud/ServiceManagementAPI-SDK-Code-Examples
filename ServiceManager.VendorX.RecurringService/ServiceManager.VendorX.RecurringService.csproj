@@ -44,10 +44,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interworks.Cloud.ServiceManagersSDK">
-      <HintPath>..\References\Interworks.Cloud.ServiceManagersSDK.dll</HintPath>
+      <HintPath>..\Libraries\Interworks.Cloud.ServiceManagersSDK.dll</HintPath>
     </Reference>
     <Reference Include="Interworks.Extensions.Models">
-      <HintPath>..\References\Interworks.Extensions.Models.dll</HintPath>
+      <HintPath>..\Libraries\Interworks.Extensions.Models.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
