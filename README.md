@@ -17,7 +17,7 @@ Code examples projects for interworks.cloud Platform Service Management API impl
 
 
 ## Demo
-
+### Service Manager for Recurring Services (pre-defined plans)
 [![Watch the video](https://developers.interworks.cloud/wp-content/uploads/2021/11/footer_logo-1.png)](https://developers.interworks.cloud/wp-content/uploads/2021/11/Service-Manager-Recurring-Services.mp4)
 
 ## Support
