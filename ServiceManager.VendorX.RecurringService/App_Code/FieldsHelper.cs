@@ -18,41 +18,88 @@ namespace ServiceManager.VendorX.RecurringService.Code
                 {
                     new Field()
                     {
-                        ID = "FieldUsername",
+                        ID = "Country",
                         Definition = new FieldDefinition()
                         {
-                            ID = "FieldUsername",
-                            Name = "Username",
-                            Description = "Username info",
+                            ID = "Country",
+                            Name = "Country",
+                            Description = "The country the services will be delivered",
                             Kind = FieldKind.Text,
-                            MaxLength = 50,
+                            MaxLength = 2,
                             IsRequired = true,
                             SortOrder = 1
                         }
                     },
                     new Field()
                     {
-                        ID = "FieldPassword",
+                        ID = "password",
                         Definition = new FieldDefinition()
                         {
-                            ID = "FieldPassword",
+                            ID = "password",
                             Name = "Password",
-                            Description = "Password info",
+                            Description = "The password",
                             Kind = FieldKind.PasswordText,
-                            MaxLength = 50,
+                            MaxLength = 100,
                             IsRequired = true,
                             SortOrder = 2
                         }
+                    },
+                    new Field()
+                    {
+                        ID = "certificatefile",
+                        Definition = new FieldDefinition()
+                        {
+                            ID = "certificatefile",
+                            Name = "Certificate File",
+                            Description = "The country the services will be delivered",
+                            Kind = FieldKind.CertificateFile,
+                            MaxLength = 3,
+                            IsRequired = true,
+                            SortOrder = 2
+                        }
+                    },
+                    new Field()
+                    {
+                        ID = "excelfile",
+                        Definition = new FieldDefinition()
+                        {
+                            ID = "excelfile",
+                            Name = "Pricing File",
+                            Description = "The country the services will be delivered",
+                            Kind = FieldKind.File,
+                            MaxLength = 4,
+                            IsRequired = true,
+                            SortOrder = 3
+                        }
                     }
+                    //new Field()
+                    //{
+                    //    ID="attestation",
+                    //    Definition = new FieldDefinition()
+                    //    {
+                    //        ID="attestation",
+                    //        Name="Partner Attestation",
+                    //        Description="Partner Attestations approval is required to enable provisioning of services",
+                    //        Kind = FieldKind.TermsOfUse,
+                    //        IsRequired = true,
+                    //        SortOrder=4,
+                    //        TermOfUseMessages = new TermOfUseMessagesDefinition()
+                    //        {
+                    //            Accept= "The Partner Attestation affects all purchases<script>alert('ok')</script> of products from this instance on both BSS and Storefront.<br/>By accepting the Partner Attestation:<br/><b>For every purchase, I confirm that my organization is acting as an Indirect Partner when choosing a Reseller and as a Direct Partner in the absence of selecting a reseller.</b>",
+                    //            Accepted= "For every purchase of products from this instance, I confirm that my organization is acting as an Indirect Partner when choosing a Reseller and as a Direct Partner in the absence of selecting a reseller.",
+                    //            Revoke= "Revoking the Partner Attestation for this instance will block new purchases of products from this instance on both BSS and Storefront.<br/>Are you sure?"
+                    //        }
+                    //    }
+                    //}                    
                 }
             };
         }
-        public static bool ValidateCredentials(string username, string password)
+        public static bool ValidateCredentials(string country)
         {
             bool success = false;
 
             // Validate the given credentials and return true if success or false on failure
-            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
+            if (!string.IsNullOrEmpty(country) && country.Equals("GR"))
                 success = true;
 
             return success;
@@ -63,15 +110,33 @@ namespace ServiceManager.VendorX.RecurringService.Code
         public static ICollection<ProductTypeDefinition> GetProductTypes()
         {
             return new List<ProductTypeDefinition>() {
-                new ProductTypeDefinition("VenderXSubscriptionBased", GetAttributes(), GetProducts())
-                {
-                    ID = "VenderXSubscriptionBased",
-                    Name = "Vendor X - Subscription-based Service",
-                    Description = "Subcription based services provided by Vendor X",
-                    Derivative = Derivative.SUBSCRIPTION,
-                    PortalUrl = "https://vendorx.portal.com"
-                }
-            };
+                        new ProductTypeDefinition("VenderXSubscriptionBased", GetAttributes(), GetProducts())
+                        {
+                            ID = "VenderXSubscriptionBased",
+                            Name = "Vendor X - Subscription-based Service",
+                            AutoExecuteAddonCancelRequest = true,
+                            Description = "Subcription based services provided by Vendor X",
+                            Derivative = Derivative.SUBSCRIPTION,
+                            PortalUrl = "https://vendorx.portal.com",
+                            CustomFieldCollection = new CustomFieldCollection(){
+                                        Fields = new List<CustomField>(){
+                                            new CustomField(){
+                                                ID = "VendorXOfferId",
+                                                Definition = new CustomFieldDefinition(){
+                                                                    ID = "VendorXOfferId",
+                                                                    Name = "Vendor X Offer Id",
+                                                                    DataType = CustomFieldDataType.Text,
+                                                                    IsRequired = false,
+                                                                    IsReadOnly = true,
+                                                                    Kind = CustomFieldKind.SimpleValue,
+                                                                    AvailableToStorefront = false,
+                                                                    SortOrder = 1
+                                                }
+                                            }
+                                        }
+                            }
+                        }
+                };
         }
 
         private static IList<AttributeDefinition> GetAttributes()
@@ -95,7 +160,7 @@ namespace ServiceManager.VendorX.RecurringService.Code
                 {
                     ID = "VenderXSubscriptionBasedPlan",
                     Name = "Vendor X - Plan",
-                    IsRequired = true,
+                    IsRequired = false,
                     Kind = AttributeKind.PredefinedChooseOne,
                     KindSpecified = true,
                     Description = "Enables selection of target plan for a product",
@@ -106,7 +171,7 @@ namespace ServiceManager.VendorX.RecurringService.Code
                 {
                     ID = "VenderXSubscriptionBasedAddonPlan",
                     Name = "Vendor X - Addon Plan",
-                    IsRequired = true,
+                    IsRequired = false,
                     Kind = AttributeKind.PredefinedChooseOne,
                     KindSpecified = true,
                     Description = "Enables selection of target addon plan for an addon product",
@@ -147,6 +212,11 @@ namespace ServiceManager.VendorX.RecurringService.Code
                                     Values = new List<object>() { "VenderXSubscriptionBasedPlan_StandardEdition" }
                                 }
                             },
+                            UnitType = "My Unit",
+                            TrialEnabled=true,
+                            TrialDuration =60,
+                            TrialDurationType= TrialDurationType.Days,
+                            TrialQuantity = 20,
                             Prices = new List<PriceDefinition>()
                             {
                                 new PriceDefinition()
@@ -158,6 +228,16 @@ namespace ServiceManager.VendorX.RecurringService.Code
                                         new UnitDefinition(){ BillingCycle = ProductUnitBillingCycle.Annually, Cost = 65M, Price=100M}
                                     }
                                 }
+                            },
+                            BillingOptionRecurringChargePrepaid = new ProductBillingOptionRecurringChargePrepaid()
+                            {
+                                NoOfDecimals = 2,
+                                UpFrontBilling = true,
+                                ChargeRule = UsageChargeRuleValues.PARTIAL,
+                                BillingDate=BillingDateValues.SpecificBillingDate,
+                                SpecificBillingDate = 1,
+                                Term = 1,
+                                FreePeriod = true
                             }
                         },
                         new Product()
@@ -167,7 +247,7 @@ namespace ServiceManager.VendorX.RecurringService.Code
                             Name = "Vendor X - Professional Edition",
                             Derivative = Derivative.SUBSCRIPTION,
                             IsActivated = true,
-                            UpdateOptions = new List<UpdateOptions>() { UpdateOptions.Name, UpdateOptions.Prices, UpdateOptions.UnitBillingCycles, UpdateOptions.RelatedProducts },
+                            UpdateOptions = new List<UpdateOptions>() { UpdateOptions.Name, UpdateOptions.Prices, UpdateOptions.UnitBillingCycles, UpdateOptions.RelatedProducts, UpdateOptions.TrialOffer },
                             UnitBillingCycles = new List<ProductUnitBillingCycle>(){ ProductUnitBillingCycle.Annually, ProductUnitBillingCycle.Monthly},
                             RelatedProducts = new List<ProductRelationDefinition>()
                             {
@@ -185,6 +265,10 @@ namespace ServiceManager.VendorX.RecurringService.Code
                                     Values = new List<object>() { "VenderXSubscriptionBasedPlan_ProfessionalEdition" }
                                 }
                             },
+                            TrialEnabled=true,
+                            TrialDuration =30,
+                            TrialDurationType= TrialDurationType.Days,
+                            TrialQuantity = 15,
                             Prices = new List<PriceDefinition>()
                             {
                                 new PriceDefinition()
@@ -193,9 +277,23 @@ namespace ServiceManager.VendorX.RecurringService.Code
                                     Units = new List<UnitDefinition>()
                                     {
                                         new UnitDefinition(){ BillingCycle = ProductUnitBillingCycle.Monthly, Cost = 12.5M, Price=15M},
-                                        new UnitDefinition(){ BillingCycle = ProductUnitBillingCycle.Annually, Cost = 125M, Price=150M}
+                                        new UnitDefinition(){ BillingCycle = ProductUnitBillingCycle.Annually, Cost = 125.455676948M, Price=150M}
                                     }
                                 }
+                            },
+                            BillingOptionRecurringChargePrepaid = new ProductBillingOptionRecurringChargePrepaid()
+                            {
+                                UpFrontBilling = true,
+                                FreePeriod = true,
+                                ChargeRule = UsageChargeRuleValues.PARTIAL,
+                                BillingDate=BillingDateValues.SpecificBillingDate,
+                                SpecificBillingDate = 1,
+                                //LockOptions = new List<RecurringChargePrepaidProductLockOptionItem>()
+                                //{
+                                //    RecurringChargePrepaidProductLockOptionItem.FreePeriod,
+                                //    RecurringChargePrepaidProductLockOptionItem.NoOfDecimals,
+                                //    RecurringChargePrepaidProductLockOptionItem.SpecificBillingDate                                    
+                                //}
                             }
                         },
                         new Product()
@@ -215,6 +313,9 @@ namespace ServiceManager.VendorX.RecurringService.Code
                                     Values = new List<object>() { "VenderXSubscriptionBasedPlan_EnterpriseEdition" }
                                 }
                             },
+                            TrialEnabled=true,
+                            TrialDuration =60,
+                            TrialDurationType= TrialDurationType.Days,
                             Prices = new List<PriceDefinition>()
                             {
                                 new PriceDefinition()
@@ -226,6 +327,23 @@ namespace ServiceManager.VendorX.RecurringService.Code
                                         new UnitDefinition(){ BillingCycle = ProductUnitBillingCycle.Annually, Cost = 165M, Price=200M}
                                     }
                                 }
+                            },
+                            BillingOptionRecurringChargePrepaid = new ProductBillingOptionRecurringChargePrepaid()
+                            {
+                                UpFrontBilling = true,
+                                FreePeriod = true,
+                                ChargeRule = UsageChargeRuleValues.PARTIAL,
+                                BillingDate=BillingDateValues.SpecificBillingDate,
+                                SpecificBillingDate = 1,
+                                //LockOptions = new List<RecurringChargePrepaidProductLockOptionItem>()
+                                //{
+                                //    RecurringChargePrepaidProductLockOptionItem.ChargeRule,
+                                //    RecurringChargePrepaidProductLockOptionItem.FreePeriod,
+                                //    RecurringChargePrepaidProductLockOptionItem.NoOfDecimals,
+                                //    RecurringChargePrepaidProductLockOptionItem.SpecificBillingDate,
+                                //    RecurringChargePrepaidProductLockOptionItem.Term,
+                                //    RecurringChargePrepaidProductLockOptionItem.UpFrontBilling
+                                //}
                             }
                         }
                 },
