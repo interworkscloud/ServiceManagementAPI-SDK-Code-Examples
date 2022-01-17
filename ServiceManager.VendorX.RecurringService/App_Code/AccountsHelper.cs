@@ -8,9 +8,8 @@ namespace ServiceManagerSDK.Example.RecurringServices.Code
 {
     public static class AccountsHelper
     {
-        private static string _syncOptionName = "PrimaryIDName";
-        private static string _syncOptionAdminName = "PrimaryIDAdminName";
-        private static string _syncOptionExternalId = "PrimaryIDExternalID";
+        private static string _syncOptUsername = "username";
+        private static string _syncOptRole = "role";
 
         public static CustomFieldCollection GetSyncOptions()
         {
@@ -18,40 +17,29 @@ namespace ServiceManagerSDK.Example.RecurringServices.Code
             {
                 Fields = new List<CustomField>()
                     {
-                        new CustomField(_syncOptionName)
+                        new CustomField(_syncOptUsername)
                         {
                             Definition = new CustomFieldDefinition
                             {
-                                ID = _syncOptionName,
-                                Name = "Primary ID Name",
+                                ID = _syncOptUsername,
+                                Name = "Username",
                                 Kind = CustomFieldKind.SimpleValue,
                                 DataType = CustomFieldDataType.Text,
-                                AvailableToStorefront=true,
-                                IsRequired = false
+                                IsRequired = true
                             }
                         },
-                        new CustomField(_syncOptionAdminName)
+                        new CustomField(_syncOptRole)
                         {
-                            Definition = new CustomFieldDefinition
+                            Definition = new CustomFieldDefinition(new Dictionary<string, string>{
+                                { "1", "User" },
+                                { "2", "Reseller" }
+                            })
                             {
-                                ID = _syncOptionAdminName,
-                                Name = "Primary ID Admin Name",
-                                Kind = CustomFieldKind.SimpleValue,
+                                ID = _syncOptRole,
+                                Name = "Role",
+                                Kind = CustomFieldKind.List,
                                 DataType = CustomFieldDataType.Text,
-                                AvailableToStorefront=true,
-                                IsRequired = false
-                            }
-                        },
-                        new CustomField(_syncOptionExternalId)
-                        {
-                            Definition = new CustomFieldDefinition
-                            {
-                                ID = _syncOptionExternalId,
-                                Name = "Primary ID External ID",
-                                Kind = CustomFieldKind.SimpleValue,
-                                DataType = CustomFieldDataType.Text,
-                                AvailableToStorefront=true,
-                                IsRequired = false
+                                IsRequired = true
                             }
                         }
                     }

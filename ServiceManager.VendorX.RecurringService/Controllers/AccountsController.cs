@@ -30,8 +30,6 @@ namespace ServiceManager.VendorX.RecurringService.Controllers
 
                 //...check if account exists on the other system
 
-                exists = true;
-
                 if (!exists)
                     result = new ResultDefinition() { Code = 0, Message = "Account does not exists on third system." };
                 else
@@ -51,8 +49,7 @@ namespace ServiceManager.VendorX.RecurringService.Controllers
                     Code = 0,
                     Message = "Account synchronized"
                 };
-
-               
+                               
                 //... implement your synchronization procedure
 
                 result.Result = System.Guid.NewGuid().ToString();

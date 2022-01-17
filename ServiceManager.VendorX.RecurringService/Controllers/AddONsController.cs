@@ -23,12 +23,12 @@ namespace ServiceManager.VendorX.RecurringService.Controllers
             {
                 ServiceResultDefinition result = new ServiceResultDefinition();
 
-                 string externalSubscriptionID = definition.ID;
+                string externalSubscriptionAddonID = definition.Addons.Where(a => a.ActionType == ActionType.Cancel).FirstOrDefault().ID;
 
                 ///...do something on the other side to update
 
                 // The external subscription ID
-                result.Result = externalSubscriptionID;
+                result.Result = externalSubscriptionAddonID;
 
                 return SuccessResult(ActionLogUUID, result);
             }
@@ -53,12 +53,12 @@ namespace ServiceManager.VendorX.RecurringService.Controllers
             {
                 ServiceResultDefinition result = new ServiceResultDefinition();
 
-                 string externalSubscriptionID = definition.ID;
+                 string externalSubscriptionAddonID = definition.Addons.Where(a=>a.ActionType== ActionType.Provision).FirstOrDefault().ID;
 
                 ///...do something on the other side to update
 
-                // The external subscription ID
-                result.Result = externalSubscriptionID;
+                // The external subscription addon ID
+                result.Result = externalSubscriptionAddonID;
 
                 return SuccessResult(ActionLogUUID, result);
             }

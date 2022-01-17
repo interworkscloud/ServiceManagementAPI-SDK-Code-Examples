@@ -27,11 +27,12 @@ namespace ServiceManager.VendorX.RecurringService.Controllers
 
             using (LogTracer tracer = new LogTracer(LogActionInput, Logging, ActionName, ActionLogUUID, new List<object>() { fields }))
             {
-                var country = fields.Fields.SingleOrDefault(r => r.ID.Equals("Country")).GetSingleValue().ToString();
+                var username = fields.Fields.SingleOrDefault(r => r.ID.Equals("FieldUsername")).GetSingleValue().ToString();
+                var password = fields.Fields.SingleOrDefault(r => r.ID.Equals("FieldPassword")).GetSingleValue().ToString();
 
-                if (!FieldsHelper.ValidateCredentials(country))
+                if (!FieldsHelper.ValidateCredentials(username, password))
                 {
-                    errors.Add("Invalid Country code");
+                    errors.Add("Invalid credentials");
                 }
 
                 return SuccessResult(ActionLogUUID, errors);
@@ -51,14 +52,16 @@ namespace ServiceManager.VendorX.RecurringService.Controllers
                 return SuccessResult(ActionLogUUID, productTypeCollection);
             }
         }
-        
+
         [Route("Fields/AdditionalInfo")]
         public override IHttpActionResult GetAdditionalInfo()
         {
             using (var tracer = new LogTracer(LogActionInput, Logging, ActionName, ActionLogUUID))
             {
-                string a = _excelFile;
-                return SuccessResult(ActionLogUUID, string.Empty);
+                Dictionary<string, string> additionalInfo = new Dictionary<string, string>();
+                additionalInfo.Add("ProfileId", System.Guid.NewGuid().ToString());
+
+                return SuccessResult(ActionLogUUID, additionalInfo);
             }
         }
     }

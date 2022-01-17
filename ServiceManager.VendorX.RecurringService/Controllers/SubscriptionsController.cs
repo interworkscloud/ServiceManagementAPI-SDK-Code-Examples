@@ -55,32 +55,13 @@ namespace ServiceManager.VendorX.RecurringService.Controllers
             {
                 ServiceResultDefinition result = new ServiceResultDefinition();
 
-                #region Validations
-                //Dictionary<int, string> errors = new Dictionary<int, string>() {
-                //    { -6532, "Purchase of product could not be made with quantity less that 250" }
-                //};
-
-                ////Check minimum quantity requirement
-                //if (definition.Quantity < 250)
-                //    return ErrorResult(ActionLogUUID, -6532, errors[-6532]);
-
-                #endregion
-
-                if (definition.CheckOnly)
-                    return SuccessResult(ActionLogUUID, result);
-
-                #region Provisioning
-
+                string externalSubscriptionID = null;
                 ///...do something on the other side to create subscription
-                result.CustomFieldValues = new Dictionary<string, string>()
-                {
-                    {"VendorXOfferId","38F0BAD7-06ED-4094-AA4E-3395B3482C82" }
-                };
-                
-                // Set external subscription ID
-                result.Result = Guid.NewGuid().ToString();
 
-                #endregion
+                externalSubscriptionID = Guid.NewGuid().ToString();
+
+                // The external subscription ID
+                result.Result = externalSubscriptionID;
 
                 return SuccessResult(ActionLogUUID, result);
             }
