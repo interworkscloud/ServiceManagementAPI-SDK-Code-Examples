@@ -117,24 +117,7 @@ namespace ServiceManager.VendorX.RecurringService.Code
                             AutoExecuteAddonCancelRequest = true,
                             Description = "Subcription based services provided by Vendor X",
                             Derivative = Derivative.SUBSCRIPTION,
-                            PortalUrl = "https://vendorx.portal.com",
-                            CustomFieldCollection = new CustomFieldCollection(){
-                                        Fields = new List<CustomField>(){
-                                            new CustomField(){
-                                                ID = "VendorXOfferId",
-                                                Definition = new CustomFieldDefinition(){
-                                                                    ID = "VendorXOfferId",
-                                                                    Name = "Vendor X Offer Id",
-                                                                    DataType = CustomFieldDataType.Text,
-                                                                    IsRequired = false,
-                                                                    IsReadOnly = true,
-                                                                    Kind = CustomFieldKind.SimpleValue,
-                                                                    AvailableToStorefront = false,
-                                                                    SortOrder = 1
-                                                }
-                                            }
-                                        }
-                            }
+                            PortalUrl = "https://vendorx.portal.com"
                         }
                 };
         }
