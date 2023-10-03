@@ -102,5 +102,23 @@ namespace ServiceManager.VendorX.RecurringService.Controllers
                 return SuccessResult(ActionLogUUID, result);
             }
         }
+
+        [Route("Subscriptions/UpgradeToPaid")]
+        public override IHttpActionResult SubscriptionsUpgradeToPaid(ServiceDefinition definition)
+        {
+            using (var tracer = new LogTracer(LogActionInput, Logging, ActionName, ActionLogUUID, new List<object>() { definition }))
+            {
+                ServiceResultDefinition result = new ServiceResultDefinition();
+
+                string externalSubscriptionID = definition.ID;
+
+                ///...do something on the other side to update
+
+                // The external subscription ID
+                result.Result = externalSubscriptionID;
+
+                return SuccessResult(ActionLogUUID, result);
+            }
+        }
     }
 }

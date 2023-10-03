@@ -49,7 +49,7 @@ namespace ServiceManager.VendorX.RecurringService.Controllers
                     Code = 0,
                     Message = "Account synchronized"
                 };
-
+                               
                 //... implement your synchronization procedure
 
                 result.Result = System.Guid.NewGuid().ToString();

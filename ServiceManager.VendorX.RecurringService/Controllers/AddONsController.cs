@@ -21,11 +21,14 @@ namespace ServiceManager.VendorX.RecurringService.Controllers
         {
             using (var tracer = new LogTracer(LogActionInput, Logging, ActionName, ActionLogUUID, new List<object>() { definition }))
             {
-                ServiceResultDefinition result = new ServiceResultDefinition()
-                {
-                    Code = -1,
-                    Message = "Addons are not supported from the Example"
-                };
+                ServiceResultDefinition result = new ServiceResultDefinition();
+
+                string externalSubscriptionAddonID = definition.Addons.Where(a => a.ActionType == ActionType.Cancel).FirstOrDefault().ID;
+
+                ///...do something on the other side to update
+
+                // The external subscription ID
+                result.Result = externalSubscriptionAddonID;
 
                 return SuccessResult(ActionLogUUID, result);
             }
@@ -36,11 +39,8 @@ namespace ServiceManager.VendorX.RecurringService.Controllers
         {
             using (var tracer = new LogTracer(LogActionInput, Logging, ActionName, ActionLogUUID, new List<object>() { definition }))
             {
-                ServiceResultDefinition result = new ServiceResultDefinition()
-                {
-                    Code = -1,
-                    Message = "Addons are not supported from the Example"
-                };
+                ServiceResultDefinition result = new ServiceResultDefinition();
+                 result.Result = Guid.NewGuid().ToString();
 
                 return SuccessResult(ActionLogUUID, result);
             }
@@ -51,11 +51,14 @@ namespace ServiceManager.VendorX.RecurringService.Controllers
         {
             using (var tracer = new LogTracer(LogActionInput, Logging, ActionName, ActionLogUUID, new List<object>() { definition }))
             {
-                ServiceResultDefinition result = new ServiceResultDefinition()
-                {
-                    Code = -1,
-                    Message = "Addons are not supported from the Example"
-                };
+                ServiceResultDefinition result = new ServiceResultDefinition();
+
+                 string externalSubscriptionAddonID = definition.Addons.Where(a=>a.ActionType== ActionType.Provision).FirstOrDefault().ID;
+
+                ///...do something on the other side to update
+
+                // The external subscription addon ID
+                result.Result = externalSubscriptionAddonID;
 
                 return SuccessResult(ActionLogUUID, result);
             }

@@ -53,9 +53,16 @@ namespace ServiceManager.VendorX.RecurringService.Controllers
             }
         }
 
+        [Route("Fields/AdditionalInfo")]
         public override IHttpActionResult GetAdditionalInfo()
         {
-            throw new System.NotImplementedException();
+            using (var tracer = new LogTracer(LogActionInput, Logging, ActionName, ActionLogUUID))
+            {
+                Dictionary<string, string> additionalInfo = new Dictionary<string, string>();
+                additionalInfo.Add("ProfileId", System.Guid.NewGuid().ToString());
+
+                return SuccessResult(ActionLogUUID, additionalInfo);
+            }
         }
     }
 }

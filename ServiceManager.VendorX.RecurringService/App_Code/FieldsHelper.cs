@@ -63,15 +63,15 @@ namespace ServiceManager.VendorX.RecurringService.Code
         public static ICollection<ProductTypeDefinition> GetProductTypes()
         {
             return new List<ProductTypeDefinition>() {
-                new ProductTypeDefinition("VenderXSubscriptionBased", GetAttributes(), GetProducts())
-                {
-                    ID = "VenderXSubscriptionBased",
-                    Name = "Vendor X - Subscription-based Service",
-                    Description = "Subcription based services provided by Vendor X",
-                    Derivative = Derivative.SUBSCRIPTION,
-                    PortalUrl = "https://vendorx.portal.com"
-                }
-            };
+                        new ProductTypeDefinition("VenderXSubscriptionBased", GetAttributes(), GetProducts())
+                        {
+                            ID = "VenderXSubscriptionBased",
+                            Name = "Vendor X - Subscription-based Service",
+                            Description = "Subcription based services provided by Vendor X",
+                            Derivative = Derivative.SUBSCRIPTION,
+                            PortalUrl = "https://vendorx.portal.com"
+                        }
+                };
         }
 
         private static IList<AttributeDefinition> GetAttributes()
@@ -95,7 +95,7 @@ namespace ServiceManager.VendorX.RecurringService.Code
                 {
                     ID = "VenderXSubscriptionBasedPlan",
                     Name = "Vendor X - Plan",
-                    IsRequired = true,
+                    IsRequired = false,
                     Kind = AttributeKind.PredefinedChooseOne,
                     KindSpecified = true,
                     Description = "Enables selection of target plan for a product",
@@ -106,7 +106,7 @@ namespace ServiceManager.VendorX.RecurringService.Code
                 {
                     ID = "VenderXSubscriptionBasedAddonPlan",
                     Name = "Vendor X - Addon Plan",
-                    IsRequired = true,
+                    IsRequired = false,
                     Kind = AttributeKind.PredefinedChooseOne,
                     KindSpecified = true,
                     Description = "Enables selection of target addon plan for an addon product",
@@ -127,8 +127,6 @@ namespace ServiceManager.VendorX.RecurringService.Code
                             ID = "VendorXStandard",
                             Code = "VendorXStandard",
                             Name = "Vendor X - Standard Edition",
-                            Derivative = Derivative.SUBSCRIPTION,
-                            IsActivated = true,
                             UpdateOptions = new List<UpdateOptions>() { UpdateOptions.Name, UpdateOptions.Prices, UpdateOptions.UnitBillingCycles, UpdateOptions.RelatedProducts },
                             UnitBillingCycles = new List<ProductUnitBillingCycle>(){ ProductUnitBillingCycle.Monthly, ProductUnitBillingCycle.Annually},
                             RelatedProducts = new List<ProductRelationDefinition>()
@@ -165,10 +163,8 @@ namespace ServiceManager.VendorX.RecurringService.Code
                             ID = "VendorXProfessional",
                             Code = "VendorXProfessional",
                             Name = "Vendor X - Professional Edition",
-                            Derivative = Derivative.SUBSCRIPTION,
-                            IsActivated = true,
                             UpdateOptions = new List<UpdateOptions>() { UpdateOptions.Name, UpdateOptions.Prices, UpdateOptions.UnitBillingCycles, UpdateOptions.RelatedProducts },
-                            UnitBillingCycles = new List<ProductUnitBillingCycle>(){ ProductUnitBillingCycle.Annually, ProductUnitBillingCycle.Monthly},
+                            UnitBillingCycles = new List<ProductUnitBillingCycle>(){ ProductUnitBillingCycle.Monthly, ProductUnitBillingCycle.Annually},
                             RelatedProducts = new List<ProductRelationDefinition>()
                             {
                                 new ProductRelationDefinition()
@@ -193,7 +189,7 @@ namespace ServiceManager.VendorX.RecurringService.Code
                                     Units = new List<UnitDefinition>()
                                     {
                                         new UnitDefinition(){ BillingCycle = ProductUnitBillingCycle.Monthly, Cost = 12.5M, Price=15M},
-                                        new UnitDefinition(){ BillingCycle = ProductUnitBillingCycle.Annually, Cost = 125M, Price=150M}
+                                        new UnitDefinition(){ BillingCycle = ProductUnitBillingCycle.Annually, Cost = 125.455676948M, Price=150M}
                                     }
                                 }
                             }
@@ -203,8 +199,6 @@ namespace ServiceManager.VendorX.RecurringService.Code
                             ID = "VendorXEnterprise",
                             Code = "VendorXEnterprise",
                             Name = "Vendor X - Enterprise Edition",
-                            Derivative = Derivative.SUBSCRIPTION,
-                            IsActivated = true,
                             UpdateOptions = new List<UpdateOptions>() { UpdateOptions.Name, UpdateOptions.Prices, UpdateOptions.UnitBillingCycles, UpdateOptions.RelatedProducts },
                             UnitBillingCycles = new List<ProductUnitBillingCycle>(){ ProductUnitBillingCycle.Monthly, ProductUnitBillingCycle.Annually},
                             Attributes = new List<Interworks.Extensions.Models.ProductTypes.Attribute>()
@@ -237,8 +231,8 @@ namespace ServiceManager.VendorX.RecurringService.Code
                         Code = "VendorXCustomDomainAddon",
                         Name = "Vendor X - Custom Domain",
                         Description = "Custom domain addon for Vendor X service",
-                        UnitBillingCycles = new List<ProductUnitBillingCycle>() { ProductUnitBillingCycle.Monthly, ProductUnitBillingCycle.Annually },
                         UpdateOptions = new List<UpdateOptions>() { UpdateOptions.Name, UpdateOptions.UnitBillingCycles, UpdateOptions.Prices },
+                        UnitBillingCycles = new List<ProductUnitBillingCycle>() { ProductUnitBillingCycle.Monthly, ProductUnitBillingCycle.Annually },
                         Products = new List<string>() { "VendorXStandard","VendorXProfessional", "VendorXEnterprise" },
                         Attributes = new List<Interworks.Extensions.Models.ProductTypes.Attribute>()
                             {
@@ -267,8 +261,8 @@ namespace ServiceManager.VendorX.RecurringService.Code
                         Code = "VendorXPremiumSupportAddon",
                         Name = "Vendor X - Premium Support",
                         Description = "Premium support addon for Vendor X service",
-                        UnitBillingCycles = new List<ProductUnitBillingCycle>() { ProductUnitBillingCycle.Monthly, ProductUnitBillingCycle.Annually },
                         UpdateOptions = new List<UpdateOptions>() { UpdateOptions.Name, UpdateOptions.UnitBillingCycles, UpdateOptions.Prices },
+                        UnitBillingCycles = new List<ProductUnitBillingCycle>() { ProductUnitBillingCycle.Monthly, ProductUnitBillingCycle.Annually },
                         Products = new List<string>() { "VendorXProfessional", "VendorXEnterprise" },
                         Attributes = new List<Interworks.Extensions.Models.ProductTypes.Attribute>()
                             {
@@ -297,8 +291,8 @@ namespace ServiceManager.VendorX.RecurringService.Code
                         Code = "VendorXAdvancedReportsAddon",
                         Name = "Vendor X - Advanced Reports",
                         Description = "Advanced reports addon for Vendor X service",
-                        UnitBillingCycles = new List<ProductUnitBillingCycle>() { ProductUnitBillingCycle.Monthly, ProductUnitBillingCycle.Annually },
                         UpdateOptions = new List<UpdateOptions>() { UpdateOptions.Name, UpdateOptions.UnitBillingCycles, UpdateOptions.Prices },
+                        UnitBillingCycles = new List<ProductUnitBillingCycle>() { ProductUnitBillingCycle.Monthly, ProductUnitBillingCycle.Annually },
                         Products = new List<string>() { "VendorXEnterprise" },
                         Attributes = new List<Interworks.Extensions.Models.ProductTypes.Attribute>()
                             {
