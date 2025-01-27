@@ -44,10 +44,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interworks.Cloud.ServiceManagersSDK, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Interworks.Cloud.ServiceManagersSDK.1.0.14\lib\net48\Interworks.Cloud.ServiceManagersSDK.dll</HintPath>
+      <HintPath>..\packages\Interworks.Cloud.ServiceManagersSDK.1.2.8\lib\net48\Interworks.Cloud.ServiceManagersSDK.dll</HintPath>
     </Reference>
-    <Reference Include="Interworks.Extensions.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Interworks.Extensions.Models.1.0.14\lib\net48\Interworks.Extensions.Models.dll</HintPath>
+    <Reference Include="Interworks.Extensions.Models, Version=1.2.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Interworks.Extensions.Models.1.2.8\lib\netstandard2.0\Interworks.Extensions.Models.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -129,6 +129,7 @@
     <Content Include="LogsConfig.config" />
     <Content Include="AuthConfig.config" />
     <Content Include="NLog.config" />
+    <Content Include="libman.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
